@@ -24,6 +24,12 @@ const routes = [
     name: 'record-detail',
     meta: {layout: 'main'},
     component: ()=> import('../views/RecordDetail.vue')
+  },
+  {
+    path: '/history',
+    name: 'history',
+    meta: {layout: 'main'},
+    component: ()=> import('../views/History.vue')
   }
 ];
 
