@@ -18,7 +18,7 @@ import MainLayout from '@/layouts/MainLayout.vue';
       }
     },
     components:{
-      AuthLayout, MainLayout
+      AuthLayout, MainLayout, 
     }
   }
 </script>
