@@ -49,7 +49,13 @@ const routes = [
     name: 'register',
     meta: {layout: 'auth'},
     component: ()=> import('../views/Register.vue')
-  }
+  },
+  {
+    path: '/record',
+    name: 'record',
+    meta: {layout: 'main'},
+    component: ()=> import('../views/Record.vue')
+  },
 ];
 
 const router = createRouter({
