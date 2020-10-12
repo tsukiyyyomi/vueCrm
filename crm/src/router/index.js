@@ -11,13 +11,13 @@ const routes = [
     path: '/login',
     name: 'login',
     meta: {layout: 'auth'},
-    component: ()=> import('./views/Login.vue')
+    component: ()=> import('../views/Login.vue')
   },
   {
     path: '/categories',
     name: 'categories',
     meta: {layout: 'main'},
-    component: ()=> import('./views/Categories.vue')
+    component: ()=> import('../views/Categories.vue')
   }
 ];
 
