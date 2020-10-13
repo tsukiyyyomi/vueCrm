@@ -5,7 +5,7 @@
                     <a href="#" @click.prevent="$emit('click-menu')">
                         <i class="material-icons black-text">dehaze</i>
                     </a>
-                    <span class="black-text">12.12.12</span>
+                    <span class="black-text">{{formattedDate}}</span>
                 </div>
 
                 <ul class="right hide-on-small-and-down">
@@ -38,16 +38,41 @@
 <script>
 import M from 'materialize-css';
     export default{
+        data:()=>({
+            date: new Date(),
+            interval:null,
+            dropdown:null
+        }),
         methods:{
             logout(){
                 console.log('Logout');
                 this.$router.push('/login?message=logout');
             }
         },
-        mounted(){            
-            M.Dropdown.init(this.$refs.dropdown, {
+        mounted(){   
+            this.interval = setInterval(()=>{
+                this.date = new Date();
+            }, 1000);
+            this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
                 constrainWidth: true              
             })
+        },
+        beforeUnmount(){
+            clearInterval(this.interval);
+            if(this.dropdown && this.dropdown.destroy){
+                this.dropdown.destroy();
+            }
+            
+        }, 
+        computed: {
+            formattedDate(){
+                return `${this.date.getDate()}.
+                ${this.date.getMonth()}.
+                ${this.date.getFullYear()}
+                ${this.date.getHours()}:
+                ${this.date.getMinutes()}:
+                ${this.date.getSeconds()}`;
+            }
         }
     }
 </script>
