@@ -17,13 +17,13 @@
 
                         <ul id='dropdown' class='dropdown-content'>
                             <li>
-                                <a href="#" class="black-text">
+                                <router-link to="/profile" class="black-text">
                                     <i class="material-icons">account_circle</i>Профиль
-                                </a>
+                                </router-link>
                             </li>
                             <li class="divider" tabindex="-1"></li>
                             <li>
-                                <a href="#" class="black-text">
+                                <a href="#" class="black-text" @click.prevent = "logout">
                                     <i class="material-icons">assignment_return</i>Выйти
                                 </a>
                             </li>
@@ -38,9 +38,15 @@
 <script>
 import M from 'materialize-css';
     export default{
+        methods:{
+            logout(){
+                console.log('Logout');
+                this.$router.push('/login?message=logout');
+            }
+        },
         mounted(){            
             M.Dropdown.init(this.$refs.dropdown, {
-                constrainWidth: true                
+                constrainWidth: true              
             })
         }
     }
