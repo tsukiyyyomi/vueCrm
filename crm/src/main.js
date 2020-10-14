@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import Vuelidate from 'vuelidate'
 import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
@@ -8,5 +9,6 @@ import 'materialize-css/dist/js/materialize.min'
 
 createApp(App)
   .use(store)
-  .use(router)
+  .use(router)  
+  .use(Vuelidate)
   .mount("#app");
