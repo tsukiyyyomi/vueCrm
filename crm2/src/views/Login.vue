@@ -76,7 +76,7 @@ import messages from '../utils/messages';
             
         },
         methods:{
-            submitHandler(){
+            async submitHandler(){
                 if(this.$v.$invalid){
                     this.$v.$touch();
                     return;
@@ -85,7 +85,7 @@ import messages from '../utils/messages';
                     email: this.email,
                     password: this.password
                 }
-                console.log(formData);
+                await this.$store.dispatch('login', formData);                
                 this.$router.push('/');
             }
         }
