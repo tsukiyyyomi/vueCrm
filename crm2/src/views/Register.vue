@@ -94,7 +94,7 @@ import {email, required, minLength} from 'vuelidate/lib/validators'
             agree: {checked: v => v}
         },
         methods:{
-          submitHandler(){
+          async submitHandler(){
             if(this.$v.$invalid){
               this.$v.$touch();
               return;
@@ -104,8 +104,13 @@ import {email, required, minLength} from 'vuelidate/lib/validators'
               password: this.password,
               name: this.name
             }
-            console.log(formData);
+            try{
+              await this.$store.dispatch('register', formData)
             this.$router.push('/');
+            } catch (e){
+              console.log(e);
+            }
+            
           }
         }
   }
